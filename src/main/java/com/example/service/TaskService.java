@@ -8,6 +8,9 @@ import com.example.entity.TaskEntity;
 import com.example.expceptions.TaskNotFoundException;
 import com.example.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,17 +25,20 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TaskService {
 
     private final TaskRepository taskRepository;
 
     public TaskResponseDTO create(TaskCreateDTO payload) {
+        log.info("Create task: {}", payload);
         TaskEntity task = toEntity(payload);
         taskRepository.save(task);
         return toResponse(task);
     }
 
     public Optional<TaskResponseDTO> update(Long id, TaskUpdateDTO payload) {
+        log.info("Update task: {}", payload);
         return taskRepository
                 .findById(id)
                 .map(task -> {
@@ -43,10 +49,12 @@ public class TaskService {
     }
 
     public void delete(Long id) {
+        log.info("Delete task: {}", id);
         taskRepository.deleteTaskById(id);
     }
 
     public List<TaskResponseDTO> findAll() {
+        log.info("Find all tasks");
         return taskRepository.findAll().stream().map(this::toResponse).toList();
     }
 
@@ -67,11 +75,10 @@ public class TaskService {
         );
     }
 
-    private TaskEntity toEntity(TaskEntity task, TaskUpdateDTO payload) {
+    private void toEntity(TaskEntity task, TaskUpdateDTO payload) {
         task.setTitle(payload.getTitle());
         task.setDescription(payload.getDescription());
         task.setDueDate(payload.getDueDate());
         task.setStatus(payload.getStatus());
-        return task;
     }
 }

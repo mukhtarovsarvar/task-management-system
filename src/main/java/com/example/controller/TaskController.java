@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controller;
 
 import com.example.dto.request.TaskCreateDTO;
 import com.example.dto.request.TaskUpdateDTO;
@@ -6,9 +6,7 @@ import com.example.dto.response.TaskResponseDTO;
 import com.example.service.TaskService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
