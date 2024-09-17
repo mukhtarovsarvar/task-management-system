@@ -21,7 +21,7 @@ import java.util.List;
  * @contact @sarvargo
  */
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 @RequiredArgsConstructor
 public class TaskController {
 

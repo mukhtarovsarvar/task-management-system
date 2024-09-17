@@ -52,8 +52,10 @@ public class TaskService {
 
     private TaskResponseDTO toResponse(TaskEntity task) {
         return new TaskResponseDTO(
-                task.getId(), task.getTitle(), task.getDescription(),
-                task.getDueDate(), task.getCreatedDate()
+                task.getId(), task.getTitle(),
+                task.getDescription(),
+                task.getDueDate(), task.getStatus(),
+                task.getCreatedDate()
         );
     }
 

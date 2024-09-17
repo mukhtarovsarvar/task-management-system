@@ -1,0 +1,25 @@
+### Create /tasks
+POST localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "Walking every night"
+}
+
+
+### Find all /tasks
+GET localhost:8080/tasks
+
+
+### Update task /tasks/{id}
+PUT localhost:8080/tasks/2
+Content-Type: application/json
+
+{
+  "title": "Walking every night",
+  "description": "Walking with my friend because it's useful for healthy",
+  "status": "IN_PROGRESS"
+}
+
+### Delete /tasks/{id}
+DELETE localhost:8080/tasks/1

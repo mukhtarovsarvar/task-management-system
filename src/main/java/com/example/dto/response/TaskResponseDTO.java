@@ -1,5 +1,6 @@
 package com.example.dto.response;
 
+import com.example.enums.TaskStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -22,5 +23,6 @@ public class TaskResponseDTO {
     String title;
     String description;
     LocalDate dueDate;
+    TaskStatus status;
     LocalDateTime createdDate;
 }
